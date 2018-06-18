@@ -80,6 +80,7 @@ public class SchedulerException extends Exception {
      * @return the underlying exception, or <code>null</code> if there is not
      *         one.
      */
+    //返回调度异常的发送原因(ps:上次就中奖了)
     public Throwable getUnderlyingException() {
         return super.getCause();
     }

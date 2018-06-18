@@ -28,6 +28,7 @@ import java.util.UUID;
  * 
  * @author <a href="mailto:jeff@binaryfeed.org">Jeffrey Wescott</a>
  */
+//目前看来是JobKey和TriggerKey
 public class Key<T>  implements Serializable, Comparable<Key<T>> {
   
     private static final long serialVersionUID = -7141167957642391350L;

@@ -30,6 +30,7 @@ import java.util.StringTokenizer;
  * 
  * @author James House
  */
+//<<<>>> 1.用于StdSchedulerFactory,从配置文件quartz.properties中读取值
 public class PropertiesParser {
 
     /*

@@ -28,6 +28,7 @@ package org.quartz;
  * 
  * @author James House
  */
+//<<<>>> 监听调度器动作的,不是监听job执行动作的
 public interface SchedulerListener {
 
     /*

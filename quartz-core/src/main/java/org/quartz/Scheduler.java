@@ -29,8 +29,13 @@ import org.quartz.spi.JobFactory;
 import org.quartz.utils.Key;
 
 /**
+ * 这是quartz调度器scheduler主要的接口
+ */
+
+/**
  * This is the main interface of a Quartz Scheduler.
- * 
+ *
+ *scheduler维护一个jobDetaild的注册器，任务一旦注册，当于任务相关联的trigger触发是sheduler将负责任务的执行
  * <p>
  * A <code>Scheduler</code> maintains a registry of <code>{@link org.quartz.JobDetail}</code>s
  * and <code>{@link Trigger}</code>s. Once registered, the <code>Scheduler</code>
@@ -123,6 +128,7 @@ public interface Scheduler {
      */
     String DEFAULT_GROUP = Key.DEFAULT_GROUP;
 
+    //<<<>>>quartz文档好像没说不能使用RECOVERING_JOBS耶
     /**
      * A constant <code>Trigger</code> group name used internally by the
      * scheduler - clients should not use the value of this constant
@@ -132,6 +138,7 @@ public interface Scheduler {
      */
     String DEFAULT_RECOVERY_GROUP = "RECOVERING_JOBS";
 
+    //<<<>>>难道是我没看文档
     /**
      * A constant <code>Trigger</code> group name used internally by the
      * scheduler - clients should not use the value of this constant

@@ -78,6 +78,7 @@ public class SimpleScheduleBuilder extends ScheduleBuilder<SimpleTrigger> {
      * 
      * @return the new SimpleScheduleBuilder
      */
+    //<<<>>>默认一分钟重复一次
     public static SimpleScheduleBuilder repeatMinutelyForever() {
 
         return simpleSchedule()

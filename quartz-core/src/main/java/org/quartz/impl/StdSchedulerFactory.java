@@ -299,6 +299,7 @@ public class StdSchedulerFactory implements SchedulerFactory {
 
     private PropertiesParser cfg;
 
+    //目前看来日志都是用的sl4j
     private final Logger log = LoggerFactory.getLogger(getClass());
 
     //  private Scheduler scheduler;
@@ -323,6 +324,7 @@ public class StdSchedulerFactory implements SchedulerFactory {
      *
      * @see #initialize(Properties)
      */
+    //<<<>>> props应该是quartz.properties中的配置
     public StdSchedulerFactory(Properties props) throws SchedulerException {
         initialize(props);
     }
@@ -333,6 +335,7 @@ public class StdSchedulerFactory implements SchedulerFactory {
      *
      * @see #initialize(String)
      */
+    //<<<>>>通过文件名自己读取相关quartz文件配置
     public StdSchedulerFactory(String fileName) throws SchedulerException {
         initialize(fileName);
     }
@@ -373,6 +376,7 @@ public class StdSchedulerFactory implements SchedulerFactory {
      * <code>{@link java.lang.System#getProperties()}</code>.
      * </p>
      */
+    //StdSchedulerFactory初始化
     public void initialize() throws SchedulerException {
         // short-circuit if already initialized
         if (cfg != null) {
@@ -382,6 +386,7 @@ public class StdSchedulerFactory implements SchedulerFactory {
             throw initException;
         }
 
+        //获取配置文件名称,quartz.properties
         String requestedFile = System.getProperty(PROPERTIES_FILE);
         String propFileName = requestedFile != null ? requestedFile
                 : "quartz.properties";
@@ -399,7 +404,7 @@ public class StdSchedulerFactory implements SchedulerFactory {
                     } else {
                         propSrc = "default file in current working dir: 'quartz.properties'";
                     }
-
+                    //<<<>>>读取quartz的配置文件
                     in = new BufferedInputStream(new FileInputStream(propFileName));
                     props.load(in);
 
@@ -490,7 +495,7 @@ public class StdSchedulerFactory implements SchedulerFactory {
                 "use a non-default version of initialize().",
                 e);
         }
-
+        //代码中设置的配置属性值优先级大于quartz.properties中的
         if (sysProps != null) {
             props.putAll(sysProps);
         }
@@ -590,7 +595,7 @@ public class StdSchedulerFactory implements SchedulerFactory {
         if (propSrc == null) {
             propSrc = "an externally provided properties instance.";
         }
-
+        //解析quartz.properties中的值
         this.cfg = new PropertiesParser(props);
     }
 
